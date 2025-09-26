@@ -1,42 +1,37 @@
-/*#include <iostream>
-
-using namespace std;
-
-int main(){
-    
-    int n, a[100005];
-    
-    cin >> n;
-    
-    bool ok = 0;
-    
-    for(int i = 1; i <= n; i++){
-        cin >> a[i];
-    }
-        
-    for(int i = 1; i <= n; i++){
-        ok = 0;
-        for(int j = i - 1; j >= 1; j--){
-            if(a[j] <= a[i]){
-                ok = 1;
-                cout << a[j] << ' ';
-                break;
-            }
-        }
-        if(!ok) cout << -1 << ' ';
-    }
-    
-    
-    
-    return 0;
-}*/
-
 #include <iostream>
+#include <vector>
 #include <stack>
 using namespace std ;
 
 int main(){
     int n ;
     cin >> n ;
+    vector <int> num(n), res(n) ;
     
+
+    
+    for(int i = 0; i < n; i++){
+        cin >> num[i] ; 
+    }
+
+    stack <int> s ;
+
+    for(int i = 0; i < n; i++){
+        while(!s.empty() && num[s.top()] > num[i]){
+            s.pop() ;
+        }
+
+        if(s.empty()){
+            res[i] = -1 ;
+        }
+        else{
+            res[i] = num[s.top()] ;
+        }
+
+        s.push(i) ;
+    }
+
+    for(int i = 0; i < n; i++){
+        cout << res[i] << " " ;
+    }
 }

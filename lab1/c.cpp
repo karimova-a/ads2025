@@ -1,29 +1,38 @@
 #include <iostream>
 #include <string>
+using namespace std ;
 
-using namespace std;
 
 int main(){
-    
-    string s, t, ans1, ans2;
-    
-    cin >> s >> t;
-    
-    for(int i = 0; i < s.size(); i++){
-        if(s[i] == '#'){
-            ans1.pop_back();
+    string s1, s2 ;
+    cin >> s1 >> s2 ;
+
+    string r1, r2 ;
+
+    for(int i = 0; i < s1.size(); i++){
+        if(s1[i] == '#'){
+            r1.pop_back() ;
         }
-        else ans1 += s[i];
-    }
-    for(int i = 0; i < t.size(); i++){
-        if(t[i] == '#'){
-            ans2.pop_back();
+        else{
+            r1.push_back(s1[i]) ;
         }
-        else ans2 += t[i];
     }
-    
-    if(ans1 == ans2) cout << "Yes";
-    else cout << "No";
-    
-    return 0;
+
+    for(int i = 0; i < s2.size(); i++){
+        if(s2[i] == '#'){
+            r2.pop_back() ;
+        }
+        else{
+            r2.push_back(s2[i]) ;
+        }
+    }
+
+    if(r1 == r2){
+        cout << "Yes" ;
+    }
+    else{
+        cout << "No" ;
+    }
+
 }
+

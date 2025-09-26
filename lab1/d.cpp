@@ -1,30 +1,27 @@
 #include <iostream>
 #include <stack>
 #include <string>
-using namespace std;
+using namespace std ;
 
-int main() {
-    string str;
-    cin >> str;
+int main(){
+    string s ;
+    cin >> s ;
 
-    if (str.empty()) {
-        cout << "NO";
-        return 0;
+    stack <char> st ;
+
+    for(int i = 0; i < s.size(); i++){
+        if(!st.empty() && st.top() == s[i]){
+            st.pop() ;
+        }
+        else{
+            st.push(s[i]) ;
+        }
     }
 
-    stack<char> st;
-    st.push(str[0]);
-
-    for (int i = 1; i < str.size(); i++) {
-        char current = str[i];
-        if (!st.empty() && st.top() == current)
-            st.pop();
-        else
-            st.push(current);
+    if(st.empty()){
+        cout << "YES" << endl ;
     }
-
-    if (st.empty()) cout << "YES";
-    else cout << "NO";
-
-    return 0;
+    else{
+        cout << "NO" << endl ;
+    }
 }

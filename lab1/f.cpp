@@ -9,6 +9,7 @@ int main(){
     
     cin >> n;
     
+    
     prime[0] = prime[1] = 0;
     
     for(int i = 2; i <= 100000; i++){

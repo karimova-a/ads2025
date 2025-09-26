@@ -22,6 +22,7 @@ int main(){
     q2.push(b4);
     q2.push(b5);
     
+    
     int cnt = 0;
     
     while(cnt <= 1000000 && !q1.empty() && !q2.empty()){
