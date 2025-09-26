@@ -1,60 +1,37 @@
 #include <iostream>
-#include <queue>
+#include <deque>
 using namespace std ;
 
 int main(){
-    int n, t ;
+    int n ;
     cin >> n ;
     
-    queue <int> q ;
-    
     while(n--){
+        int t ;
         cin >> t ;
+        
+        deque <int> q ;
 
+        for (int i = t; i >= 1; i--){
+            
+            q.push_front(i) ;
+            
+            for(int j = 0; j < i; j++){
+                int x = q.back() ;
+                q.pop_back() ;
+                q.push_front(x) ;
+            }
+        }
+
+        while (!q.empty()){
+            cout << q.front() << " " ;
+            q.pop_front() ;
+        }
+
+        cout << endl ;
     }
 
-    
-    
-   
-    
 }
 
 
-/*
-#include <bits/stdc++.h>
-using namespace std;
 
-int main(){
-    
-    int n, x, a[1005];
-    
-    cin >> n;
-    
-    while(n--){
-        int x;
-        cin >> x;
-
-        int a[1005];
-        memset(a, -1, sizeof(a));
-
-        int pos = 0;
-        for (int cur = 1; cur <= x; cur++) {
-            int cnt = cur + 1; 
-            while (true) {
-                if (a[pos] == -1){
-                    cnt--;
-                    if (cnt == 0){
-                        a[pos] = cur;
-                        break;
-                    }
-                }
-                pos++;
-                if (pos == x) pos = 0;
-            }
-        }
-        for(int i = 0; i < x; i++) cout << a[i] << ' ';
-        cout << endl;
-    }
-    //6 -> *1**** -> *1**2* -> *1*32* -> 41*32* -> 41*325 -> 416325
-    return 0;
-}*/
